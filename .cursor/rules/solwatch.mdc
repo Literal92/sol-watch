@@ -1,0 +1,19 @@
+---
+description: SolWatch is a read-only Solana tracker. Keep RPC keys server-side and use @solana/kit.
+alwaysApply: true
+---
+
+# SolWatch
+
+- Read-only. Never ask for, store, log, or accept private keys or seed phrases.
+- Never add send, sign, or "unlock funds" flows.
+- Default cluster is devnet. Read `NEXT_PUBLIC_CLUSTER` (`mainnet-beta` for mainnet).
+- Read the RPC URL from server-only `SOLANA_RPC_URL`. Do not hardcode it or prefix it with `NEXT_PUBLIC`.
+- Use `@solana/kit` (`createSolanaRpc`, `address`) for RPC and address checks. Do not use `@solana/web3.js` for RPC.
+- Convert lamports with `Number(lamports) / 1e9` via `lamportsToSol`.
+- Keep components small. Handle loading and error states for every network request.
+
+```ts
+const parsed = parseAddress(input);
+if (!parsed) return { error: "Enter a valid Solana address." };
+```

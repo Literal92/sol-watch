@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --background: #f6f3ea;
+  --foreground: #1a1f17;
+  --surface: #fffdf8;
+  --surface-2: #efeae0;
+  --border: #e2d9c8;
+  --muted: #5e6758;
+  --accent: #3f6b12;
+  --accent-contrast: #f6f8e8;
+  --danger: #b42318;
+  --positive: #2f7d32;
+}
+
+.dark {
+  color-scheme: dark;
+  --background: #10140f;
+  --foreground: #f3f0e6;
+  --surface: #171d16;
+  --surface-2: #1e261c;
+  --border: #2c3629;
+  --muted: #a3aa98;
+  --accent: #d6ff4a;
+  --accent-contrast: #142006;
+  --danger: #ff8b7a;
+  --positive: #d6ff4a;
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-contrast: var(--accent-contrast);
+  --color-danger: var(--danger);
+  --color-positive: var(--positive);
+}
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.hero-wash {
+  background-image:
+    radial-gradient(ellipse at top, color-mix(in oklab, var(--accent) 16%, transparent), transparent 55%);
+}
+
+.wallet-adapter-button {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 14px;
+  line-height: 40px;
+}
+
+.wallet-adapter-button-trigger {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.wallet-adapter-button-trigger:not([disabled]):hover {
+  background: var(--accent);
+  filter: brightness(1.08);
+}
+
+.wallet-adapter-dropdown-list,
+.wallet-adapter-modal-wrapper {
+  background: var(--surface);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  font-family: var(--font-sans), sans-serif;
+}
+
+.wallet-adapter-modal-wrapper {
+  border-radius: 16px;
+}
+
+.wallet-adapter-modal-title,
+.wallet-adapter-dropdown-list-item,
+.wallet-adapter-modal-list .wallet-adapter-button {
+  color: var(--foreground);
+}
+
+.wallet-adapter-dropdown-list-item:not([disabled]):hover,
+.wallet-adapter-modal-list .wallet-adapter-button:not([disabled]):hover {
+  background: var(--surface-2);
+}
+
+.wallet-adapter-modal-button-close {
+  background: var(--surface-2);
+}
+
+.wallet-adapter-modal-button-close svg,
+.wallet-adapter-modal-list-more svg {
+  fill: var(--foreground);
+}
+
+.wallet-adapter-modal-list-more {
+  color: var(--muted);
+}
